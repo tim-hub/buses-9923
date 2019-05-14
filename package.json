@@ -1,0 +1,12 @@
+{
+  "name": "bus-in-car-park",
+  "version": "1.0.0",
+  "description": "This is a project for test assessment.",
+  "main": "index.js",
+  "repository": "https://github.com/tim-hub/buses-9312",
+  "author": "tim-hub",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.20.0"
+  }
+}
