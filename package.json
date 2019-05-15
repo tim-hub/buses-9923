@@ -7,6 +7,15 @@
   "author": "tim-hub",
   "license": "MIT",
   "dependencies": {
-    "commander": "^2.20.0"
+    "commander": "^2.20.0",
+    "esm": "^3.2.22"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4"
+  },
+  "scripts": {
+    "test": "mocha test --require esm",
+    "start": "node --require esm cli/index.js"
   }
 }
