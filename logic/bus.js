@@ -1,11 +1,9 @@
-'use strict';
 class Bus{
-  constructor(x,y,face){
+  constructor(x,y,facing){
     this.x = x;
     this.y = y;
-    this.face = face;
+    this.facing = facing;
   }
 }
-
 
 export default Bus;
