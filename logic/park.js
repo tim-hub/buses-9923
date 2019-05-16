@@ -9,14 +9,15 @@ class Park{
   place(x,y, facing){
     if (this.buses.length > 25){
       // no place to park
-      logger.log('The park is already full, cannot be parked here.')
+      logger.log('alert', 'The park is already full, cannot be parked here.')
 
     }else if (this.buses.find((bus)=>{return bus.x==x && bus.y==y})){
       // already a bus parking here
-      logger.log('There is a bus already here, cannot be parked here.')
+      logger.log('alert', 'There is a bus already here, cannot be parked here.')
+    }else{
+      let bus = new Bus(x,y,facing,this);
+      this.buses = [...this.buses, bus];
     }
-    bus = new Bus(x,y,facing,this);
-    this.buses = [...this.buses, bus];
   }
 }
 
