@@ -1,29 +1,40 @@
 import Bus from './bus'
 import logger from './logger'
+
 class Park{
+  /**
+   * The constructor of the car park
+   * @param {number} width - The width of the car park
+   * @param {number} length - The length of the car park
+   */
   constructor(width, length){
     this.width = width;
     this.length = length;
     this.buses = [];
   }
   /**
-   *
+   * @return {number} Return the count of all buses
    */
   getCountOfBuses(){
     return this.buses.length;
   }
+  /**
+   * @return {Bus} Return a copy of last bus in the array
+   */
   getLatestBus(){
-    /**
-     * Return a copy of the latest bus.
-     */
     if (this.getCountOfBuses()<=0){
       return null;
     }else{
       const the_bus = this.buses[this.getCountOfBuses()-1];
       return Object.assign(Object.create(the_bus), the_bus);
     }
-
   }
+  /**
+   * Place a bus to a position (x,y)
+   * @param {number} x - [0 - 4], in x dimension
+   * @param {number} y - [0 - 4], in y dimension
+   * @param {string} facing - The direction, where the bus will face
+   */
   place(x,y, facing){
     if (this.getCountOfBuses() >= width*length){
       // no place to park
@@ -40,7 +51,12 @@ class Park{
       this.buses = [...this.buses, bus];
     }
   }
-  turn(bus, right){
+  /**
+   * Turn a bus to right or left
+   * @param {Bus} bus - The bus required to be turned
+   * @param {boolean} [right] - Turn right?
+   */
+  turn(bus, right=true){
     if(right === true){
       bus.turnRight();
     }else{
