@@ -1,5 +1,5 @@
 import Bus from './bus'
-import logger from './logger'
+import logger from '../logger'
 
 class Park{
   /**

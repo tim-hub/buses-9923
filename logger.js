@@ -9,10 +9,10 @@ class Logger {
   log(message) {
     this.log('logging', message);
   }
-  log(msg_level, message) {
+  log(msg_type, message) {
     const timestamp = new Date().toISOString();
-    this._logs=[...this._logs, { timestamp, msg_level, message }]
-    console.log(`${timestamp} - ${msg_level} - ${message}`);
+    this._logs=[...this._logs, { timestamp, msg_type, message }]
+    console.log(`${timestamp} - ${msg_type} - ${message}`);
   }
   latest(){
     const last_log = Object.assign({},this._logs[this._logs.length-1]);
