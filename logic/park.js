@@ -6,8 +6,26 @@ class Park{
     this.length = length;
     this.buses = [];
   }
+  /**
+   *
+   */
+  getCountOfBuses(){
+    return this.buses.length;
+  }
+  getLatestBus(){
+    /**
+     * Return a copy of the latest bus.
+     */
+    if (this.getCountOfBuses()<=0){
+      return null;
+    }else{
+      const the_bus = this.buses[this.getCountOfBuses()-1];
+      return Object.assign(Object.create(the_bus), the_bus);
+    }
+
+  }
   place(x,y, facing){
-    if (this.buses.length >= width*length){
+    if (this.getCountOfBuses() >= width*length){
       // no place to park
       logger.log('alert', 'The park is already full, cannot be parked here.');
     }else if (x>=width || x <0 || y>=length || y<0){
@@ -22,8 +40,24 @@ class Park{
       this.buses = [...this.buses, bus];
     }
   }
-  move(){
+  turn(bus, right){
+    if(right === true){
+      bus.turnRight();
+    }else{
+      bus.turnLeft();
+    }
+    // set the buses list to new cloned one
+    this.buses = Object.assign([], this.buses, { [this.getCountOfBuses()-1]: bus});
+  }
+  left(bus=this.getLatestBus()){
+    this.turn(bus, false);
+  }
+  right(bus=this.getLatestBus()){
+    this.turn(bus, true)
+  }
 
+  toString(){
+    return `Car Park ${this.width}x${this.length}: \n ${this.buses}`;
   }
 }
 

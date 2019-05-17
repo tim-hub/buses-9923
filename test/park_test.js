@@ -38,3 +38,33 @@ describe('Placing testing', ()=>{
     });
   });
 });
+
+describe('Turning test', ()=>{
+  before('Park 9 cars in the car park', ()=>{
+    for(let i=0;i<3;i++ ){
+      for (let j=0;j<3; j++){
+        // do the parking here
+        the_park.place(i,j, 'NORTH');
+      }
+    }
+  });
+  context('Turn latest testing', ()=>{
+    it('Turn the latest one left', ()=>{
+      the_park.left();
+      expect(the_park.getLatestBus().facing, 'the bus after turning left '+the_park.getLatestBus()).to.eq('WEST');
+    });
+    it('Turn the latest one left', ()=>{
+      the_park.right();
+      expect(the_park.getLatestBus().facing, 'the bus after turning right '+the_park.getLatestBus()).to.eq('NORTH');
+    });
+  });
+  context('Turn the 2nd last one', ()=>{
+    it('Turn the latest one left', ()=>{
+      const getIt = () => {return the_park.buses[the_park.getCountOfBuses()-2]};
+      the_park.right(getIt());
+      expect(getIt().facing, 'the bus after turning right '+getIt()).to.eq('EAST');
+    });
+  });
+
+});
+
