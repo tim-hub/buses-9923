@@ -1,5 +1,5 @@
 import { assert, expect } from 'chai';
-import logger from '../logic/logger';
+import logger from '../logger';
 import {the_park, width, length} from '../logic/park';
 
 
@@ -16,7 +16,7 @@ describe('Placing testing', ()=>{
   context('Parking testing', ()=>{
     it('Not successful if place a bus to 0,0', ()=>{
       the_park.place(0,0,'NORTH');
-      expect(logger.latest().msg_level, 'there should be an alser in logs').to.eq('alert');
+      expect(logger.latest().msg_type, 'there should be an alert in logs').to.eq('alert');
     });
     it('Parking to 0,1 is OK', ()=>{
       the_park.place(0,1,'NORTH');
@@ -31,10 +31,10 @@ describe('Placing testing', ()=>{
           the_park.place(i,j, 'NORTH');
         }
       }
-      expect(the_park.buses.length).to.eq(width*length, 'carpark is full now');
-      expect(logger.latest().msg_level, 'it is just full').to.eq('logging');
+      expect(the_park.buses.length).to.eq(width*length, 'car park is full now');
+      expect(logger.latest().msg_type, 'it is just full').to.eq('logging');
       the_park.place(0,0,'NORTH');
-      expect(logger.latest().msg_level, 'parking when full will fail and receive alert').to.eq('alert');
+      expect(logger.latest().msg_type, 'parking when full will fail and receive alert').to.eq('alert');
     });
   });
 });
