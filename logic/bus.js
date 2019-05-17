@@ -54,7 +54,7 @@ class Bus{
   }
 
   toString(){
-    return `(BUS - ${this.x}, ${this.y}) - ${directions[this._facing]}`
+    return `${this.x},${this.y},${directions[this._facing]}`
   }
 }
 
