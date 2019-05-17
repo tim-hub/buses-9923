@@ -1,6 +1,6 @@
 import { expect, assert } from 'chai';
 import Bus from '../logic/bus';
-import { exec } from 'child_process';
+
 
 describe('Create a bus', () =>{
   let bus = new Bus(0,0, 'NORTH');
@@ -34,14 +34,13 @@ describe('Create a bus', () =>{
     it('The facing parameter can only be NORTH, EAST, WEST or SOUTH. (upper expected, both upper, lower are OK.)', ()=>{
       try{
         let newBus= new Bus(0,0,12);
-      }
-      catch(err){
+      }catch(err){
         expect(err.toString()).to.includes('Error');
       }
+
       try{
         let newBus= new Bus(0,0,'d');
-      }
-      catch(err){
+      }catch(err){
         expect(err.toString()).to.includes('Error');
       }
 
