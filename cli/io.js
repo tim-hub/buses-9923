@@ -13,14 +13,10 @@ const placeReg = new RegExp('PLACE.[0-9](,)[0-9](,)(NORTH|WEST|EAST|SOUTH)');
  * @param {string} file_path
  */
 const runCommands = (file_path)=>{
-  const commands = []
-
   /**
    * Read the file line by line
    */
-  fs.readFileSync(file_path, 'utf-8').split(/\r?\n/).forEach((line)=>{
-    commands.push(line);
-  })
+  const commands =  fs.readFileSync(file_path, 'utf-8').split(/\r?\n/);
 
   const outputs = [];
 
