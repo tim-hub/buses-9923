@@ -41,6 +41,7 @@ describe('Placing testing', ()=>{
 
 describe('Turning test', ()=>{
   before('Park 9 cars in the car park', ()=>{
+    the_park.clear();
     for(let i=0;i<3;i++ ){
       for (let j=0;j<3; j++){
         // do the parking here
