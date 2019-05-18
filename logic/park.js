@@ -10,8 +10,16 @@ class Park{
   constructor(width, length){
     this.width = width;
     this.length = length;
-    this.buses = [];
+    this._buses = [];
   }
+
+  get buses(){
+    return Object.assign([], this._buses);
+  }
+  set buses(buses){
+    this._buses = buses;
+  }
+
   /**
    * @return {number} Return the count of all buses
    */
@@ -27,8 +35,7 @@ class Park{
     if (index<0){
       return null;
     }else{
-      const the_bus = this.buses[index];
-      return Object.assign(Object.create(the_bus), the_bus);
+      return this.buses[index];
     }
   }
   getLatestBus(){
@@ -78,6 +85,10 @@ class Park{
   }
   right(index=this.getCountOfBuses()-1){
     this.turn(index, true)
+  }
+
+  move(index=this.getCountOfBuses()-1){
+
   }
 
   toString(){
