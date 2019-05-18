@@ -2,9 +2,19 @@ import { assert, expect } from 'chai';
 import logger from '../logger';
 import {the_park, width, length} from '../logic/park';
 
+describe('Clearing test', ()=>{
+  context('Park a bus then clean all', ()=>{
+    it('Car park should be empty after clear', ()=>{
+      the_park.place(0,0,'NORTH')
+      the_park.clear();
+      expect(the_park.buses.length).to.eq(0);
+    });
+  });
+})
 
 describe('Placing testing', ()=>{
   before('Place a bus to 0,0', ()=>{
+    the_park.clear();
     the_park.place(0,0,'NORTH')
   });
   context('Test the instance is the correct one', ()=>{
@@ -68,10 +78,7 @@ describe('Turning test', ()=>{
   });
 });
 
-describe('Clearing test', ()=>{
-  the_park.clear();
-  expect(the_park.buses.length).to.eq(0);
-})
+
 
 describe('Moving test', ()=>{
   before('Park a bus in the car park', ()=>{
