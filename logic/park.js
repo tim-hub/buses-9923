@@ -60,7 +60,7 @@ class Park{
       logger.log('alert', 'There is a bus already here, cannot be parked here.');
     }else{
       logger.log('logging', `Parked at (${x}, ${y})`)
-      let bus = new Bus(x,y,facing,this);
+      let bus = new Bus(x,y,facing);
       this.buses = Object.assign([], this.buses, { [index]: bus});
     }
   }
@@ -86,9 +86,29 @@ class Park{
   right(index=this.getCountOfBuses()-1){
     this.turn(index, true)
   }
-
+/**
+ * Move the bus (by default is the last bus)
+ * @param {number} index - The index of the bus in buses array
+ */
   move(index=this.getCountOfBuses()-1){
+    const bus=this.getBus(index);
+    let x = bus.x;
+    let y = bus.y;
+    const facing = bus.facing;
+    if (facing === 'NORTH') y++;
+    if (facing === 'SOUTH') y--;
+    if (facing === 'EAST') x++;
+    if (facing === 'WEST') x--;
 
+    this.place(x,y,facing,index);
+
+  }
+
+  /**
+   * Clear the whole car park.
+   */
+  clear(){
+    this._buses = [];
   }
 
   toString(){
