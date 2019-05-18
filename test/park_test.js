@@ -60,8 +60,8 @@ describe('Turning test', ()=>{
   });
   context('Turn the 2nd last one', ()=>{
     it('Turn the latest one left', ()=>{
+      the_park.right(the_park.getCountOfBuses()-2);
       const getIt = () => {return the_park.buses[the_park.getCountOfBuses()-2]};
-      the_park.right(getIt());
       expect(getIt().facing, 'the bus after turning right '+getIt()).to.eq('EAST');
     });
   });
