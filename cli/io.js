@@ -22,7 +22,6 @@ const runCommands = (file_path)=>{
   .map((command, i)=>{
     if(command.toUpperCase().search(placeReg)===0){
       // A valid PLACE command
-
       let [x,y,facing]= ((cmd)=>{
         return cmd.split(/[ ,]+/).filter(v=> v!=='PLACE');
       })(command.toUpperCase());
@@ -37,8 +36,10 @@ const runCommands = (file_path)=>{
       the_park.right();
     }else if(command.toUpperCase() === 'REPORT'){
       logger.log('Input', the_park.getLatestBus());
+      console.log(the_park.getLatestBus().toString());
     }else if(command.toUpperCase() === 'MOVE'){
       logger.log('Input', 'Move the bus');
+      the_park.move();
     }
   });
 }
