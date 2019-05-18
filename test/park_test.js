@@ -60,11 +60,36 @@ describe('Turning test', ()=>{
   });
   context('Turn the 2nd last one', ()=>{
     it('Turn the latest one left', ()=>{
+      the_park.right(the_park.getCountOfBuses()-2);
       const getIt = () => {return the_park.buses[the_park.getCountOfBuses()-2]};
-      the_park.right(getIt());
       expect(getIt().facing, 'the bus after turning right '+getIt()).to.eq('EAST');
     });
   });
-
 });
+
+describe('Clearing test', ()=>{
+  the_park.clear();
+  expect(the_park.buses.length).to.eq(0);
+})
+
+describe('Moving test', ()=>{
+  before('Park a bus in the car park', ()=>{
+    the_park.clear();
+    the_park.place(2,2, 'NORTH');
+  });
+  context('Moving it towards the direction', ()=>{
+    it('Move one step', ()=>{
+      the_park.move();
+      expect(the_park.getLatestBus().y).to.eq(3);
+    });
+    it('Move to the border of car park', ()=>{
+      the_park.move();
+      expect(the_park.getLatestBus().y).to.eq(4);
+    })
+    it('Try move out to the car park, but it still stays at the border', ()=>{
+      the_park.move();
+      expect(the_park.getLatestBus().y).to.eq(4);
+    })
+  });
+})
 
