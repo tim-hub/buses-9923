@@ -15,7 +15,8 @@
     "mocha": "^6.1.4"
   },
   "scripts": {
-    "test": "mocha test --require esm",
+    "test": "mocha --require esm test/*.js",
+    "test-cli": "mocha --require esm test/cli_tests.js ",
     "start": "node --require esm cli/index.js"
   }
 }
