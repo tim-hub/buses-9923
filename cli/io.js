@@ -56,8 +56,9 @@ const runCommands = (file_path)=>{
 /**
  * Read commands from the file
  * @param {string} the_file - The path of the file(utf8), commands are required to be separated by new line
+ * @param {function} cb - The call back function to handle results
  */
-export const readCommands = (the_file)=>{
+export const readCommands = (the_file, cb)=>{
   /**
    * Check the input whether it is a relative path or not
    */
@@ -69,6 +70,6 @@ export const readCommands = (the_file)=>{
    */
   fs.access(the_file, fs.F_OK, (err) => {
     if (err) throw err;
-    return runCommands(the_file);
+    cb(runCommands(the_file));
   })
 }

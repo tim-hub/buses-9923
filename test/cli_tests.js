@@ -18,14 +18,14 @@ describe('Read commands in the input folder', ()=>{
     the_park.clear();
   });
   context('Read and run commands of 1st case', ()=>{
+    const input_file = input_dir+ 'case1.bcmd';
+    const output_file = output_dir + 'case1.bout';
     it('The result should be the same with the expected output', ()=>{
-      const input_file = input_dir+ 'case_1.bcmd';
-      const output_file = output_dir + 'case_1.bout';
       readCommands(input_file, (r)=>{
-        console.log(r[0]==='0,1,NORTH');
         expect(r).to.eql(getOutput(output_file));
       });
     });
+
   });
   context('Read all test cases, file by file', ()=>{
     fs.readdir(input_dir, (err, filenames)=>{
@@ -33,7 +33,7 @@ describe('Read commands in the input folder', ()=>{
       filenames.forEach((name, i)=>{
         it(`Run commands in file ${i} - ${name}, output should be same with expected output file`, ()=>{
           readCommands(input_dir+name, (r)=>{
-            expect(r).to.eql(getOutput(output_dir+name));
+            expect(r).to.eql(getOutput(output_dir+name.split('.')[0]+'.bout'));
           });
         });
       });
