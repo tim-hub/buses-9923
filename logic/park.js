@@ -55,7 +55,7 @@ class Park{
     }else if (x>=width || x <0 || y>=length || y<0){
       // outside of park
       logger.log('alert', `You cannot park to (${x}, ${y}) - outside of car park, you will get a ticket!!!`);
-    }else if (this.buses.find((bus)=>{return bus.x==x && bus.y==y})){
+    }else if (this.buses.find((bus)=>{return bus.x===x && bus.y===y})){
       // already a bus parking here
       logger.log('alert', `There is a bus already here - (${x}, ${y}), cannot be parked here.`);
     }else{
