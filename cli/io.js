@@ -1,5 +1,4 @@
 import fs from 'fs';
-import path from 'path';
 import logger from '../logger';
 import {the_park} from '../logic/park';
 
@@ -57,15 +56,9 @@ const runCommands = (file_path)=>{
 
 /**
  * Read commands from the file
- * @param {string} the_file - The path of the file(utf8), commands are required to be separated by new line
+ * @param {string} the_file - A valid file path. In the file, commands are required to be separated by new line
  */
 export const readCommands = (the_file)=>{
-  /**
-   * Check the input whether it is a relative path or not
-   */
-  if (!path.isAbsolute(the_file)){
-    the_file = path.join(__dirname, the_file);
-  }
   /**
    * To check the file existence
    */
