@@ -49,6 +49,9 @@ const runCommands = (file_path)=>{
       the_park.move();
     }
   });
+  if (outputs.length <= 0){
+    logger.log('alert', `In ${file_path} there is no PLACE or REPORT commands in it`);
+  }
   return [...outputs];
 }
 
@@ -70,5 +73,6 @@ export const readCommands = (the_file)=>{
     return runCommands(the_file);
   }else{
     logger.log('alert', `Error, ${the_file} does not exist`);
+    return null;
   }
 }
