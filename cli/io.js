@@ -1,5 +1,4 @@
 import fs from 'fs';
-import path from 'path';
 import logger from '../logger';
 import {the_park} from '../logic/park';
 
@@ -13,14 +12,10 @@ const placeReg = new RegExp('PLACE.[0-9](,)[0-9](,)(NORTH|WEST|EAST|SOUTH)');
  * @param {string} file_path
  */
 const runCommands = (file_path)=>{
-  const commands = []
-
   /**
    * Read the file line by line
    */
-  fs.readFileSync(file_path, 'utf-8').split(/\r?\n/).forEach((line)=>{
-    commands.push(line);
-  })
+  const commands =  fs.readFileSync(file_path, 'utf-8').split(/\r?\n/);
 
   const outputs = [];
 
@@ -47,32 +42,30 @@ const runCommands = (file_path)=>{
       // report the bus current position
       logger.log('io', the_park.getLatestBus());
       outputs.push(the_park.getLatestBus().toString());
-      console.log(outputs[outputs.length-1]);
     }else if(command.toUpperCase() === 'MOVE'){
       // move the bus towards the current facing direction
       logger.log('io', 'Move the bus');
       the_park.move();
     }
   });
+  if (outputs.length <= 0){
+    logger.log('alert', `In ${file_path} there is no valid commands in it`);
+  }
   return [...outputs];
 }
 
 /**
  * Read commands from the file
- * @param {string} the_file - The path of the file(utf8), commands are required to be separated by new line
+ * @param {string} the_file - A valid file path. In the file, commands are required to be separated by new line
  */
 export const readCommands = (the_file)=>{
   /**
-   * Check the input whether it is a relative path or not
-   */
-  if (!path.isAbsolute(the_file)){
-    the_file = path.join(__dirname, the_file);
-  }
-  /**
    * To check the file existence
    */
-  fs.access(the_file, fs.F_OK, (err) => {
-    if (err) throw err;
+  if(fs.existsSync(the_file)){
     return runCommands(the_file);
-  })
+  }else{
+    logger.log('alert', `Error, ${the_file} does not exist`);
+    return null;
+  }
 }
