@@ -2,8 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/tim-hub/buses-9923.svg?style=svg)](https://circleci.com/gh/tim-hub/buses-9923) [![codefactor](https://www.codefactor.io/repository/github/tim-hub/buses-9923/badge?style=flat-square)](https://www.codefactor.io/repository/github/tim-hub/buses-9923)
 
-This is a small NodeJS CLI application. The comments are in **JSDoc** style, can be used to generate documentation easily. **CircleCI** is used as a service for continuous integration during development. **esm** here is used for ECMAScript module loading.
-
+This is a very small NodeJS CLI application. The comments are in **JSDoc** style, can be used to generate documentation easily. **CircleCI** is used as a service for continuous integration during development. **esm** here is used for ECMAScript module loading.
 
 
 ## How to
@@ -11,8 +10,7 @@ This is a small NodeJS CLI application. The comments are in **JSDoc** style, can
 - yarn
 - git
 
-
-    `yarn` is recommended(`npm` should work too, but it is not used during development)
+> `yarn` is recommended(`npm` should work too, but it is not used during development)
 
 ### Run the app
 
@@ -26,7 +24,7 @@ This is a small NodeJS CLI application. The comments are in **JSDoc** style, can
 ## About Input/Output
 
 ### Input
-- Input, from a file which contains the commands, sample files are in `test/data/input/`
+- Input, from a file which contains the commands, sample files are in `test/data/input/`, for example in `case3.bcmd`, commands are
 
 ```
 PLACE 1,2,EAST
@@ -36,7 +34,7 @@ LEFT
 MOVE
 REPORT
 ```
-As the example above, commands are separated by new line.
+All commands must be separated by new line.
 Currently there are 5 valid commands, `MOVE`, `LEFT`, `RIGHT`, `REPORT` and `PLACE [x],[y],[direction]`, a proper `PLACE` command requires 3 parameters,
 
 - `x` and `y` which both are between 0 to 4, x,y stands for the position of bus will be parked.
@@ -58,7 +56,7 @@ Mocha and Chai are used as test framework ans assertion library.
 - `yarn test` will test all testing.
 - `yarn test-cli` will test functionality of cli only.
 
-    all testing data in `test/data/` will be tested.
+> All testing cases in `test/data/` will be used to test the app.
 
 
 
@@ -74,4 +72,4 @@ Sample data is included, which is stored at `test/data/` folder. Fot the testing
 
 
 ## References
-- [Requirements Analyse Results](analyse.md)
+- [Requirements Analyse Results](https://github.com/tim-hub/buses-9923/blob/master/Analyse.md)
