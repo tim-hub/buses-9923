@@ -71,14 +71,18 @@ class Park{
    * @param {boolean} [right] - Turn right?
    */
   turn(index, right){
-    const bus=this.getBus(index);
-    if(right === true){
-      bus.turnRight();
+    if(index >= 0 ){
+      const bus=this.getBus(index);
+      if(right === true){
+        bus.turnRight();
+      }else{
+        bus.turnLeft();
+      }
+      // set the buses list to new cloned one
+      this.buses = Object.assign([], this.buses, { [index]: bus});
     }else{
-      bus.turnLeft();
+      logger.log('alert', 'Command ignore, you cannot turn any bus before you park one');
     }
-    // set the buses list to new cloned one
-    this.buses = Object.assign([], this.buses, { [index]: bus});
   }
   left(index=this.getCountOfBuses()-1){
     this.turn(index, false);
@@ -91,16 +95,21 @@ class Park{
  * @param {number} index - The index of the bus in buses array
  */
   move(index=this.getCountOfBuses()-1){
-    const bus=this.getBus(index);
-    let x = bus.x;
-    let y = bus.y;
-    const facing = bus.facing;
-    if (facing === 'NORTH') y++;
-    if (facing === 'SOUTH') y--;
-    if (facing === 'EAST') x++;
-    if (facing === 'WEST') x--;
+    if(index >= 0 ){
+      const bus=this.getBus(index);
+      let x = bus.x;
+      let y = bus.y;
+      const facing = bus.facing;
+      if (facing === 'NORTH') y++;
+      if (facing === 'SOUTH') y--;
+      if (facing === 'EAST') x++;
+      if (facing === 'WEST') x--;
 
-    this.place(x,y,facing,index);
+      this.place(x,y,facing,index);
+    }else{
+      logger.log('alert', 'Command ignore, you cannot move any bus before you park one');
+    }
+
 
   }
 
