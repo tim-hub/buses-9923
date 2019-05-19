@@ -50,7 +50,7 @@ const runCommands = (file_path)=>{
     }
   });
   if (outputs.length <= 0){
-    logger.log('alert', `In ${file_path} there is no PLACE or REPORT commands in it`);
+    logger.log('alert', `In ${file_path} there is no valid commands in it`);
   }
   return [...outputs];
 }

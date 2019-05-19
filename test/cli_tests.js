@@ -32,6 +32,7 @@ describe('Read commands in the input folder', ()=>{
       if(err) throw err;
       filenames.forEach((name, i)=>{
         it(`Run commands in file ${i+1} - ${name}, output should be same with expected output file`, ()=>{
+          the_park.clear();
           readCommands(input_dir+name, (r)=>{
             expect(r).to.eql(getOutput(output_dir+name.split('.')[0]+'.bout'));
           });
