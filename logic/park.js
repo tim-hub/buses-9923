@@ -75,8 +75,10 @@ class Park{
       const bus=this.getBus(index);
       if(right === true){
         bus.turnRight();
+        logger.log('logging', 'Turn Right');
       }else{
         bus.turnLeft();
+        logger.log('logging', 'Turn Left');
       }
       // set the buses list to new cloned one
       this.buses = Object.assign([], this.buses, { [index]: bus});
