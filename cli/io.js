@@ -43,7 +43,6 @@ const runCommands = (file_path)=>{
       // report the bus current position
       logger.log('io', the_park.getLatestBus());
       outputs.push(the_park.getLatestBus().toString());
-      console.log(outputs[outputs.length-1]);
     }else if(command.toUpperCase() === 'MOVE'){
       // move the bus towards the current facing direction
       logger.log('io', 'Move the bus');
@@ -56,9 +55,8 @@ const runCommands = (file_path)=>{
 /**
  * Read commands from the file
  * @param {string} the_file - The path of the file(utf8), commands are required to be separated by new line
- * @param {function} cb - The call back function to handle results
  */
-export const readCommands = (the_file, cb)=>{
+export const readCommands = (the_file)=>{
   /**
    * Check the input whether it is a relative path or not
    */
@@ -68,8 +66,9 @@ export const readCommands = (the_file, cb)=>{
   /**
    * To check the file existence
    */
-  fs.access(the_file, fs.F_OK, (err) => {
-    if (err) throw err;
-    cb(runCommands(the_file));
-  })
+  if(fs.existsSync(the_file)){
+    return runCommands(the_file);
+  }else{
+    logger.log('alert', `Error, ${the_file} does not exist`);
+  }
 }

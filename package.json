@@ -17,6 +17,6 @@
   "scripts": {
     "test": "mocha --require esm test/*.js",
     "test-cli": "mocha --require esm test/cli_tests.js ",
-    "start": "node --require esm cli/index.js"
+    "start": "node --require esm index.js"
   }
 }
