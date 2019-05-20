@@ -1,5 +1,9 @@
 *This is a repo for a test assessment, it will be deleted after assessment.*
 
+---
+[**UI Demo**](http://tim.bai.uno/buses-9923-react/) - (if resource was not loading correctly, try reload in browser with webkit engine)
+---
+
 [![CircleCI](https://circleci.com/gh/tim-hub/buses-9923.svg?style=svg)](https://circleci.com/gh/tim-hub/buses-9923) [![codefactor](https://www.codefactor.io/repository/github/tim-hub/buses-9923/badge?style=flat-square)](https://www.codefactor.io/repository/github/tim-hub/buses-9923)
 
 This is a very small NodeJS CLI application. The comments are in **JSDoc** style, can be used to generate documentation easily. **CircleCI** is used as a service for continuous integration during development. **esm** here is used for ECMAScript module loading.
@@ -73,3 +77,4 @@ Sample data is included, which is stored at `test/data/` folder. Fot the testing
 
 ## References
 - [Requirements Analyse Results](https://github.com/tim-hub/buses-9923/blob/master/Analyse.md)
+- [React UI demo source code](https://github.com/tim-hub/buses-9923-react)
