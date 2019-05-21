@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import fs from 'fs';
 import path from 'path';
 import {readCommands} from '../cli/io';
-import {the_park} from '../logic/park';
+import {thePark} from '../logic/park';
 
 
 const input_dir = path.join(__dirname, '../test/data/input/');
@@ -15,7 +15,7 @@ const getOutput = (file_path)=>{return fs.readFileSync(file_path, 'utf-8').split
 
 describe('Read commands in the input folder', ()=>{
   beforeEach('Clear the car park', ()=>{
-    the_park.clear();
+    thePark.clear();
   });
   context('Read and run commands of 1st case', ()=>{
     const input_file = input_dir+ 'case1.bcmd';
@@ -32,7 +32,7 @@ describe('Read commands in the input folder', ()=>{
       if(err) throw err;
       filenames.forEach((name, i)=>{
         it(`Run commands in file ${i+1} - ${name}, output should be same with expected output file`, ()=>{
-          the_park.clear();
+          thePark.clear();
           readCommands(input_dir+name, (r)=>{
             expect(r).to.eql(getOutput(output_dir+name.split('.')[0]+'.bout'));
           });

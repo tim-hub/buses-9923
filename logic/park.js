@@ -129,4 +129,4 @@ class Park{
 
 export const width = 5;
 export const length = 5;
-export const the_park =  new Park(width, length); // force singleton here, make sure park is one and only one.
+export const thePark =  new Park(width, length); // force singleton here, make sure park is one and only one.
