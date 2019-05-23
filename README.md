@@ -1,7 +1,7 @@
 *This is a repo for a test assessment, it will be deleted after assessment.*
 
 ---
-[**UI Demo**](http://tim.bai.uno/buses-9923-react/) - (if resource was not loading correctly, try reload in browser with webkit engine)
+[**UI Demo**](http://tim.bai.uno/buses-9923-react/) - (if resource was not loading correctly, try reload in browser with Chrome)
 ---
 
 [![CircleCI](https://circleci.com/gh/tim-hub/buses-9923.svg?style=svg)](https://circleci.com/gh/tim-hub/buses-9923) [![codefactor](https://www.codefactor.io/repository/github/tim-hub/buses-9923/badge?style=flat-square)](https://www.codefactor.io/repository/github/tim-hub/buses-9923)
