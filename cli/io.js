@@ -9,13 +9,13 @@ const placeReg = new RegExp('PLACE.[0-9](,)[0-9](,)(NORTH|WEST|EAST|SOUTH)');
 
 /**
  * Return commands read from the file path
- * @param {string} file_path
+ * @param {string} filePath
  */
-const runCommands = (file_path)=>{
+const runCommands = (filePath)=>{
   /**
    * Read the file line by line
    */
-  const commands =  fs.readFileSync(file_path, 'utf-8').split(/\r?\n/);
+  const commands =  fs.readFileSync(filePath, 'utf-8').split(/\r?\n/);
 
   const outputs = [];
 
@@ -49,23 +49,23 @@ const runCommands = (file_path)=>{
     }
   });
   if (outputs.length <= 0){
-    logger.log('alert', `In ${file_path} there is no valid commands in it`);
+    logger.log('alert', `In ${filePath} there is no valid commands in it`);
   }
   return [...outputs];
 }
 
 /**
  * Read commands from the file
- * @param {string} the_file - A valid file path. In the file, commands are required to be separated by new line
+ * @param {string} theFile - A valid file path. In the file, commands are required to be separated by new line
  */
-export const readCommands = (the_file)=>{
+export const readCommands = (theFile)=>{
   /**
    * To check the file existence
    */
-  if(fs.existsSync(the_file)){
-    return runCommands(the_file);
+  if(fs.existsSync(theFile)){
+    return runCommands(theFile);
   }else{
-    logger.log('alert', `Error, ${the_file} does not exist`);
+    logger.log('alert', `Error, ${theFile} does not exist`);
     return null;
   }
 }
